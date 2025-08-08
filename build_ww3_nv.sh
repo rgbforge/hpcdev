@@ -33,7 +33,15 @@ while getopts ":b:" opt; do
 done
 
 module load $nvmodpath
+#export CC=icx
+#export CXX=icpx
+#export FC=ifx
+#export F77=ifx
+#export F90=ifx
 
+#export I_MPI_CC=icx
+#export I_MPI_CXX=icpx
+#export I_MPI_FC=ifx
 export CC=nvc
 export CXX=nvc++
 export FC=nvfortran
