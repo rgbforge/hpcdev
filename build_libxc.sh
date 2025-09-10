@@ -7,6 +7,31 @@ show_help() {
     return 1
 }
 
+#intel options
+export CC=icx
+export CXX=icpx
+export FC=ifx
+export F77=ifx
+export F90=ifx
+export I_MPI_CC=icx
+export I_MPI_CXX=icpx
+export I_MPI_FC=ifx
+
+#nvhpc or nvmpi options
+#export CC=nvc
+#export CXX=nvc++
+#export FC=nvfortran
+#export F77=nvfortran
+#export F90=nvfortran
+
+
+
+export MPICC=mpicc
+export MPICXX=mpicxx
+export MPIFC=mpifort
+
+
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PARENT_DIR=$(dirname "${SCRIPT_DIR}")
 LIB_DIR="$PARENT_DIR/lib"
@@ -33,7 +58,7 @@ cmake_options=(
     -DCMAKE_BUILD_TYPE=Release                
     -DCMAKE_POSITION_INDEPENDENT_CODE=ON       
     -DBUILD_SHARED_LIBS=ON                     
-    # -DENABLE_FORTRAN=OFF                     
+    -DENABLE_FORTRAN=ON               
 )
 
 mkdir -p "$LIBXC_BUILD_DIR"
