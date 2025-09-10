@@ -13,3 +13,5 @@ cd CMake-3.30.9
 
 CC=gcc CXX=g++ ./configure --prefix=$BUILDPATH/CMAKE/install --parallel=$NCPUS
 
+make -j$NCPUS
+make install
