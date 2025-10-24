@@ -38,6 +38,7 @@ cmake_options=(
     -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang"
     -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
     -DLLVM_TARGETS_TO_BUILD="X86"
+    -DLIBCXXABI_ADDITIONAL_LIBRARIES=pthread
 )
 
 
