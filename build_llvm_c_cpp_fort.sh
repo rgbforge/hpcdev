@@ -8,13 +8,10 @@ show_help() {
 }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PARENT_DIR=$(dirname "${SCRIPT_DIR}")
-LIB_DIR="$PARENT_DIR/lib"
-mkdir -p "$LIB_DIR"
 CLANG_VERSION="16.0.6"
-LLVM_SOURCE_DIR="$LIB_DIR/llvm-project"
-LLVM_BUILD_DIR="$LIB_DIR/llvm-project/build"
-CLANG_INSTALL_DIR="$PARENT_DIR/install_clang_${CLANG_VERSION}"
+LLVM_SOURCE_DIR="${SCRIPT_DIR}_DIR/llvm-project"
+LLVM_BUILD_DIR="${SCRIPT_DIR}/llvm-project/build"
+CLANG_INSTALL_DIR="${SCRIPT_DIR}/install_clang_${CLANG_VERSION}"
 
 
 num_jobs=${num_jobs:-$(nproc || echo 1)}
