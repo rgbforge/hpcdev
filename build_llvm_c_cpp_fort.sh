@@ -30,6 +30,7 @@ if [ -d "$CLANG_INSTALL_DIR" ]; then
     return 0
 fi
 
+#need ;flang-rt or similar fortran runtime?
 cmake_options=(
     -DCMAKE_INSTALL_PREFIX=${CLANG_INSTALL_DIR}
     -DCMAKE_BUILD_TYPE=Release
