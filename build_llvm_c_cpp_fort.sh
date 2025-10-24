@@ -30,13 +30,14 @@ if [ -d "$CLANG_INSTALL_DIR" ]; then
     return 0
 fi
 
+#projects need ;compiler-rt;lld'
 #need ;flang-rt or similar fortran runtime? maybe openmp, etc.
 cmake_options=(
     -DCMAKE_INSTALL_PREFIX=${CLANG_INSTALL_DIR}
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_C_COMPILER=gcc
     -DCMAKE_CXX_COMPILER=g++
-    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang"
+    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang;compiler-rt;lld"
     -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
     -DLLVM_TARGETS_TO_BUILD="X86"
     -DLIBCXXABI_ADDITIONAL_LIBRARIES=pthread
