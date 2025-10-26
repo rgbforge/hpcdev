@@ -1,0 +1,34 @@
+#%Module1.0
+
+proc ModulesHelp { } {
+    puts stderr "\tVTK/VDB module help"
+}
+
+module-whatis "Loads custom VTK/OpenVDB module"
+
+module load gcc/x.y.z
+module load openmpi/a.b.c
+set base_dir "/path/to/install"
+
+
+setenv VTK_ROOT $base_dir
+setenv OpenVDB_ROOT $base_dir
+setenv TBB_ROOT $base_dir
+setenv Boost_ROOT $base_dir
+setenv Blosc_ROOT $base_dir
+setenv JEMALLOC_ROOT $base_dir
+
+prepend-path PATH $base_dir/bin
+
+prepend-path LD_LIBRARY_PATH $base_dir/lib
+prepend-path LD_LIBRARY_PATH $base_dir/lib64
+
+prepend-path CPATH $base_dir/include
+
+prepend-path LIBRARY_PATH $base_dir/lib
+prepend-path LIBRARY_PATH $base_dir/lib64
+
+prepend-path CMAKE_PREFIX_PATH $base_dir
+
+prepend-path PKG_CONFIG_PATH $base_dir/lib/pkgconfig
+prepend-path PKG_CONFIG_PATH $base_dir/lib64/pkgconfig
