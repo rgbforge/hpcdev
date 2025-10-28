@@ -9,7 +9,7 @@ show_help() {
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLANG_VERSION="16.0.6"
-LLVM_SOURCE_DIR="${SCRIPT_DIR}_DIR/llvm-project"
+LLVM_SOURCE_DIR="${SCRIPT_DIR}/llvm-project"
 LLVM_BUILD_DIR="${SCRIPT_DIR}/llvm-project/build"
 CLANG_INSTALL_DIR="${SCRIPT_DIR}/install_clang_${CLANG_VERSION}"
 
@@ -30,17 +30,16 @@ if [ -d "$CLANG_INSTALL_DIR" ]; then
     return 0
 fi
 
-#projects need ;compiler-rt;lld'
-#need ;flang-rt or similar fortran runtime? maybe openmp, etc.
 cmake_options=(
     -DCMAKE_INSTALL_PREFIX=${CLANG_INSTALL_DIR}
+    -DLLVM_ENABLE_ASSERTIONS=OFF
     -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_C_COMPILER=gcc
     -DCMAKE_CXX_COMPILER=g++
-    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang;compiler-rt;lld"
-    -DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"
-    -DLLVM_TARGETS_TO_BUILD="X86"
-    -DLIBCXXABI_ADDITIONAL_LIBRARIES=pthread
+    -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang;lld;lldb;mlir"
+    -DLLVM_ENABLE_RUNTIMES="compiler-rt;libcxx;libcxxabi;libunwind;openmp"
+    -DLLVM_BUILD_LLVM_DYLIB=ON
+    -DLLVM_LINK_LLVM_DYLIB=ON
 )
 
 
