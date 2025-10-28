@@ -30,6 +30,8 @@ if [ -d "$CLANG_INSTALL_DIR" ]; then
     return 0
 fi
 
+#-DLLVM_TARGETS_TO_BUILD="Native;SPIRV"
+#-DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;flang;lld;lldb;mlir";libclc
 cmake_options=(
     -DCMAKE_INSTALL_PREFIX=${CLANG_INSTALL_DIR}
     -DLLVM_ENABLE_ASSERTIONS=OFF
